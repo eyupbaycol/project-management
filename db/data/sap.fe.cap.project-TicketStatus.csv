@@ -1,0 +1,9 @@
+code,criticality,name
+N,3,New
+P,2,Progress
+T,2,Test
+PR,1,Problem
+C,1,Completed
+CL,0,Closed
+CC,0,Canceled
+D,0,Deleted

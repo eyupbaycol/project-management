@@ -1,0 +1,2 @@
+TicketUUID,TicketOwner_PersonID,TicketForWho_PersonID,TicketSubject,BeginDate,EndDate,TicketPriority_code,TicketStatus_code,to_Project_ProjectUUID,createdAt,createdBy,LastChangedAt,LastChangedBy
+52657221A8E4645Z17002DF03754AB36,000006,000007,İlk deneme ticketı,2025-11-06,2025-11-06,L,O,52657221A8E4645C17002DF03754AB66,2021-10-20T19:54:13.000Z,Meiner,2022-09-01T13:50:29.755Z,privileged

@@ -1,0 +1,6 @@
+code,name,criticality
+V,VeryHigh,0
+H,Heigh,1
+M,Middle,2
+L,Low,3
+VL,VeryLow,3 
