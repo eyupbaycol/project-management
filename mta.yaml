@@ -91,6 +91,8 @@ resources:
 - name: project_management-db
   type: com.sap.xs.hdi-container
   parameters:
+    config:
+      database_id: de1095d3-4eb7-441e-9b22-cc08f013b383
     service: hana
     service-plan: hdi-shared
 - name: project_management-auth

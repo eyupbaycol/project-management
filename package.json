@@ -42,7 +42,7 @@
         "requires": {
             "[production]": {
                 "db": {
-                    "kind": "hana"
+                    "kind": "hana-cloud"
                 },
                 "auth": {
                     "kind": "xsuaa",
