@@ -1,1 +1,4 @@
-code,locale,name,descr
+code,locale,name
+O,en,Open
+A,en,Accepted
+X,en,Canceled

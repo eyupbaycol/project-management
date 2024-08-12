@@ -1,4 +1,4 @@
 code,name,criticality
 O,Open,2
 A,Accepted,3
-X,Canceled,0
+X,Canceled,1

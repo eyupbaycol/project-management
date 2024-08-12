@@ -4,17 +4,19 @@ namespace sap.fe.cap.project;
 
 entity Project : managed {
     key ProjectUUID: UUID;
+    ProjectID       : Integer @readonly default 0;
     BeginDate      : Date;
     EndDate        : Date;
     to_Company: Association to Company;
     Description    : String(1024);
     to_Manager : Association to Person;
     ProjectStatus : Association to ProjectStatus;
-    to_Ticket     : Composition of many Ticket on to_Ticket.to_Project = $self;    
+    to_Ticket     : Composition of many Ticket on to_Ticket.to_Project = $self;   
+    ProjectName : String(100); 
 }
 
 entity Company : managed {
-    key CompanyUUID : UUID;
+    key CompanyID : String(6);
     InstutationName : String(100);
     WebAddress : String(100);
     TaxNumber : String(11);
@@ -22,6 +24,7 @@ entity Company : managed {
 
 entity Ticket : managed {
     key TicketUUID : UUID;
+    TicketID : Integer @Core.Computed;
     TicketOwner: Association to Person;
     TicketForWho : Association to Person;
     TicketSubject : String(100);
@@ -80,4 +83,12 @@ entity ProjectStatus : CodeList {
     Canceled = 'X';
   } default 'O'; //> will be used for foreign keys as well
   criticality : Integer; //  2: yellow colour,  3: green colour, 0: unknown
+}
+
+
+type TicketData: {
+  TotalTicketsCount: Integer;
+  AcceptedTicketsCount: Integer;
+  CancelledTicketsCount: Integer;
+  NewTicketsCount: Integer;
 }
