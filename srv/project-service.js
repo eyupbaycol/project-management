@@ -1,12 +1,11 @@
 const cds = require('@sap/cds'); require('./workarounds')
-
 class ProjectService extends cds.ApplicationService {
   init() {
 
     /**
      * Reflect definitions from the service's CDS model
      */
-    const { Project, Ticket } = this.entities
+    const { Project, Ticket,MediaFile } = this.entities
 
     this.before('CREATE', 'Project', async req => {
       const { maxID } = await SELECT.one`max(ProjectID) as maxID`.from(Project)
@@ -21,7 +20,11 @@ class ProjectService extends cds.ApplicationService {
       req.data.TicketID = maxID + 1
       req.data.TicketStatus_code = 'N'
     })
-
+    // this.before('NEW','Media', async (req)=> {
+    //   const { to_Project_ProjectUUID } = req.data
+    //   const { maxID } = await SELECT.one`max(id) as maxID`.from(Media.drafts).where({ to_Project_ProjectUUID })
+    //   req.data.id = maxID + 1
+    // })
     this.on('getTicketsData', async (req) => {
       const { ProjectUUID } = req.data
       const allTickets = await SELECT `TicketStatus_code as status`.from (Ticket) .where `to_Project_ProjectUUID = ${ProjectUUID}`

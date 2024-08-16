@@ -54,7 +54,7 @@ annotate service.Project with @(
         Name : 'ProjectD_countdistinct',
         AggregatableProperty : ProjectID,
         AggregationMethod : 'countdistinct',
-        ![@Common.Label] : 'ProjectID (Count Distinct Values)',
+        ![@Common.Label] : 'Company',
     },
     UI.Chart #alpChart : {
         $Type : 'UI.ChartDefinitionType',
@@ -264,12 +264,13 @@ annotate service.Ticket with @(
         },{
             $Type : 'UI.DataField',
             Value : TicketPriority_code,
-            Label : 'TicketPriority_code',
+            Label : '{i18n>TicketPriority}',
         },
         {
             $Type : 'UI.DataField',
             Value : TicketStatus_code,
             Criticality : TicketStatus.criticality,
+            Label : '{i18n>TicketStatus1}',
         },]
 );
 annotate service.Project with {
@@ -317,3 +318,42 @@ annotate service.ProjectStatus with @(
         ],
     }
 );
+annotate service.Media with @(
+    UI.LineItem #i18nProjectFiles : [
+        {
+            $Type : 'UI.DataField',
+            Value : content,
+            Label : 'content',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fileName,
+            Label : 'fileName',
+        },
+    ]
+);
+
+annotate service.MediaFile with @(
+    UI.LineItem #i18nProjectFiles : [
+        {
+            $Type : 'UI.DataField',
+            Value : fileName,
+            Label : 'fileName',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : content,
+            Label : 'content',
+        },
+    ]
+);
+
+annotate service.Project.attachments with @(
+    UI.LineItem #ProjectFiles : [
+        {
+            $Type : 'UI.DataField',
+            Value : content,
+        },
+    ]
+);
+

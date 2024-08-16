@@ -30,7 +30,6 @@ service ProjectService {
     };
     entity Person as projection on my.Person;
     entity Company as projection on my.Company;
-
     function getTicketsData(ProjectUUID: UUID) returns my.TicketData;
 
 }

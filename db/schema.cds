@@ -1,4 +1,5 @@
 using {custom.managed, sap.common.CodeList, Country } from './common';
+using { Attachments } from '@cap-js/attachments';
 
 namespace sap.fe.cap.project;
 
@@ -11,9 +12,11 @@ entity Project : managed {
     Description    : String(1024);
     to_Manager : Association to Person;
     ProjectStatus : Association to ProjectStatus;
-    to_Ticket     : Composition of many Ticket on to_Ticket.to_Project = $self;   
+    to_Ticket     : Composition of many Ticket on to_Ticket.to_Project = $self;
     ProjectName : String(100); 
+    attachments : Composition of Attachments;
 }
+
 
 entity Company : managed {
     key CompanyID : String(6);
@@ -52,15 +55,10 @@ entity Person : managed {
 
 entity TicketStatus: CodeList {
     key code : String enum {
-    New = 'N';
-    Progress = 'P';
-    Test = 'T';
-    Problem = 'PR';
-    Completed = 'C';
-    Closed = 'CL';
-    Canceled = 'CC';
-    Deleted = 'D';
-  } default 'N';
+    Accepted = 'A';
+    Canceled = 'X';
+    Open = 'O';
+  } default 'O';
   criticality : Integer; //  2: yellow colour,  3: green colour, 0: unknown
 } 
 

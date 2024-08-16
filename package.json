@@ -6,6 +6,7 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
+        "@cap-js/attachments": "^1.1.5",
         "@cap-js/sqlite": "^1.7.3",
         "@sap/cds": "^7",
         "@sap/hana-client": "^2.21.28",
@@ -14,7 +15,7 @@
         "express": "^4"
     },
     "devDependencies": {
-        "@sap/cds-dk": "^7",
+        "@sap/cds-dk": "^7.9.6",
         "@sap/eslint-plugin-cds": "^3",
         "@sap/ux-specification": "^1.120.14",
         "eslint": "^9",
