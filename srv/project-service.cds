@@ -30,8 +30,15 @@ service ProjectService {
     };
     entity Person as projection on my.Person;
     entity Company as projection on my.Company;
+    entity Comment as projection on my.Comment {
+      *,
+      CommentOwner.FirstName || ' ' || CommentOwner.LastName as CommentOwnerFullName: String,
+      @Common.Text: CommentOwnerFullName
+      CommentOwner
+    }
     function getTicketsData(ProjectUUID: UUID) returns my.TicketData;
 
+    action setComment(to_Ticket_TicketUUID:UUID, Message:String, User: String(6)); 
 }
 
 annotate ProjectService.Project with @Aggregation.ApplySupported: {

@@ -117,6 +117,15 @@
                         "ProjectList",
                         "ProjectObjectPage"
                     ]
+                },
+                {
+                    "pattern": "Project({key})/to_Ticket({key2}):?query:",
+                    "name": "Project_to_TicketObjectPage",
+                    "target": [
+                        "ProjectList",
+                        "ProjectObjectPage",
+                        "Project_to_TicketObjectPage"
+                    ]
                 }
             ],
             "targets": {
@@ -189,7 +198,13 @@
                         "settings": {
                             "editableHeaderContent": false,
                             "entitySet": "Project",
-                            "navigation": {},
+                            "navigation": {
+                                "to_Ticket": {
+                                    "detail": {
+                                        "route": "Project_to_TicketObjectPage"
+                                    }
+                                }
+                            },
                             "content": {
                                 "header": {
                                     "facets": {
@@ -213,6 +228,33 @@
                     },
                     "controlAggregation": "midColumnPages",
                     "contextPattern": "/Project({key})"
+                },
+                "Project_to_TicketObjectPage": {
+                    "type": "Component",
+                    "id": "Project_to_TicketObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/Project/to_Ticket",
+                            "navigation": {},
+                            "content": {
+                                "body": {
+                                    "sections": {
+                                        "TicketComments": {
+                                            "template": "com.fe.sap.project.ext.fragment.TicketComments",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "i18nTicketsDetail"
+                                            },
+                                            "title": "{i18n>ticketComments}"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "controlAggregation": "endColumnPages",
+                    "contextPattern": "/Project({key})/to_Ticket({key2})"
                 }
             }
         },

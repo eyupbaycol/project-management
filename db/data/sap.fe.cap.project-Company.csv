@@ -2,3 +2,4 @@ CompanyID,InstutationName,WebAddress,TaxNumber,createdAt,createdBy,LastChangedAt
 000001,İstanbul Havalimanı,www.iga.com.tr,47006100101,2021-10-11T12:58:58.000Z,Neubasler,2022-09-01T13:50:29.755Z,privileged
 000002,Şişecam,www.sisecam.com.tr,47006100102,2021-10-11T12:58:58.000Z,Neubasler,2022-09-01T13:50:29.755Z,privileged
 000003,Emlak Konut,www.emlakkonut.com.tr,47006100103,2021-10-11T12:58:58.000Z,Neubasler,2022-09-01T13:50:29.755Z,privileged
+000004,Test Company,www.testcompany.com.tr,47006100104,2021-10-11T12:58:58.000Z,Neubasler,2022-09-01T13:50:29.755Z,privileged

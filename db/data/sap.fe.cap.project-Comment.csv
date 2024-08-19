@@ -1,0 +1,2 @@
+CommentUUID,CommentID,CommentOwner_PersonID,Message,to_Ticket_TicketUUID,createdAt,createdBy,LastChangedAt,LastChangedBy
+7A757221-A9E4-645C-1700-2DF03754AC69,1,000006,Bu bir deneme mesajıdır,7A757221-A8E4-645C-1700-2DF03754AB66,2021-10-20T19:54:13.000Z,Meiner,2022-09-01T13:50:29.755Z,privileged

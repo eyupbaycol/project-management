@@ -5,8 +5,7 @@ class ProjectService extends cds.ApplicationService {
     /**
      * Reflect definitions from the service's CDS model
      */
-    const { Project, Ticket,MediaFile } = this.entities
-
+    const { Project, Ticket,Comment } = this.entities
     this.before('CREATE', 'Project', async req => {
       const { maxID } = await SELECT.one`max(ProjectID) as maxID`.from(Project)
       req.data.ProjectID = maxID + 1
@@ -20,11 +19,12 @@ class ProjectService extends cds.ApplicationService {
       req.data.TicketID = maxID + 1
       req.data.TicketStatus_code = 'N'
     })
-    // this.before('NEW','Media', async (req)=> {
-    //   const { to_Project_ProjectUUID } = req.data
-    //   const { maxID } = await SELECT.one`max(id) as maxID`.from(Media.drafts).where({ to_Project_ProjectUUID })
-    //   req.data.id = maxID + 1
-    // })
+    this.on('setComment', async(req)=> {
+      const {to_Ticket_TicketUUID, Message, User} = req.data
+      const { maxID } = await SELECT.one`max(CommentID) as maxID`.from(Comment).where({ to_Ticket_TicketUUID })
+      let comment = [{ CommentID: maxID + 1, CommentOwner_PersonID: User, Message: Message, to_Ticket_TicketUUID: to_Ticket_TicketUUID }]
+      const data = INSERT(comment).into(Comment);
+    })
     this.on('getTicketsData', async (req) => {
       const { ProjectUUID } = req.data
       const allTickets = await SELECT `TicketStatus_code as status`.from (Ticket) .where `to_Project_ProjectUUID = ${ProjectUUID}`

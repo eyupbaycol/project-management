@@ -271,7 +271,61 @@ annotate service.Ticket with @(
             Value : TicketStatus_code,
             Criticality : TicketStatus.criticality,
             Label : '{i18n>TicketStatus1}',
-        },]
+        },],
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : '{i18n>TicketsDetail}',
+            ID : 'i18nTicketsDetail',
+            Target : '@UI.FieldGroup#i18nTicketsDetail',
+        },
+    ],
+    UI.FieldGroup #i18nTicketsDetail : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : TicketOwnerFullName,
+                Label : 'TicketOwnerFullName',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TicketForWhoFullName,
+                Label : 'TicketForWhoFullName',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BeginDate,
+                Label : 'BeginDate',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : EndDate,
+                Label : 'EndDate',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TicketPriority_code,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TicketStatus_code,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TicketSubject,
+                Label : 'TicketSubject',
+            },
+        ],
+    },
+    UI.DataPoint #TicketStatus_code : {
+        $Type : 'UI.DataPointType',
+        Value : TicketStatus_code,
+        Title : 'TicketStatus_code',
+    },
+    UI.HeaderFacets : [
+        
+    ],
 );
 annotate service.Project with {
     to_Company @Common.Label : '{i18n>CompanyID}'
@@ -317,43 +371,5 @@ annotate service.ProjectStatus with @(
             },
         ],
     }
-);
-annotate service.Media with @(
-    UI.LineItem #i18nProjectFiles : [
-        {
-            $Type : 'UI.DataField',
-            Value : content,
-            Label : 'content',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : fileName,
-            Label : 'fileName',
-        },
-    ]
-);
-
-annotate service.MediaFile with @(
-    UI.LineItem #i18nProjectFiles : [
-        {
-            $Type : 'UI.DataField',
-            Value : fileName,
-            Label : 'fileName',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : content,
-            Label : 'content',
-        },
-    ]
-);
-
-annotate service.Project.attachments with @(
-    UI.LineItem #ProjectFiles : [
-        {
-            $Type : 'UI.DataField',
-            Value : content,
-        },
-    ]
 );
 

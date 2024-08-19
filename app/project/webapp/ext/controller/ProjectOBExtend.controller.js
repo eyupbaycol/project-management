@@ -15,7 +15,6 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension',"sap/ui/core/message/Messag
 			},
 			routing: {
 				onAfterBinding: async function (oBindingContext) {
-					debugger
 					const 
 					oExtensionAPI = this.base.getExtensionAPI(),
 					oModel = oExtensionAPI.getModel(),

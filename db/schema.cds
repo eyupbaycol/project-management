@@ -1,5 +1,5 @@
 using {custom.managed, sap.common.CodeList, Country } from './common';
-using { Attachments } from '@cap-js/attachments';
+// using { Attachments } from '@cap-js/attachments';
 
 namespace sap.fe.cap.project;
 
@@ -14,7 +14,7 @@ entity Project : managed {
     ProjectStatus : Association to ProjectStatus;
     to_Ticket     : Composition of many Ticket on to_Ticket.to_Project = $self;
     ProjectName : String(100); 
-    attachments : Composition of Attachments;
+    // attachments : Composition of Attachments;
 }
 
 
@@ -36,8 +36,16 @@ entity Ticket : managed {
     TicketPriority: Association to TicketPriority;
     TicketStatus : Association to TicketStatus; 
     to_Project : Association to Project;
+    to_Comment : Composition of many Comment on to_Comment.to_Ticket = $self;
 }
 
+entity Comment : managed {
+  key CommentUUID: UUID;
+  CommentID : Integer @Core.Computed;
+  CommentOwner : Association to Person;
+  Message : String;
+  to_Ticket: Association to Ticket;
+}
 
 entity Person : managed {
   key PersonID : String(6);

@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'com/fe/sap/project/ext/fragment/TicketComments'}">
+		 <FeedInput 
+            post="handler.onPost"
+            icon="sap-icon://paper-plane"
+            class="sapUiSmallMarginTopBottom"
+        />
+        <List id="comment_list" showSeparators="Inner" items="{to_Comment}">
+            <FeedListItem 
+                sender="{CommentOwnerFullName}"
+                icon="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"
+                timestamp="{createdAt}"
+                text="{Message}"
+            />
+        </List>
+
+	</VBox>
+</core:FragmentDefinition>
