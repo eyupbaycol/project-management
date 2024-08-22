@@ -9,7 +9,6 @@ modules:
     requires:
       - name: project_management-db
       - name: project_management-auth
-      - name: project_management-attachments
     provides:
       - name: srv-api
         properties:
@@ -94,7 +93,7 @@ resources:
     type: com.sap.xs.hdi-container
     parameters:
       config:
-        database_id: de1095d3-4eb7-441e-9b22-cc08f013b383
+        database_id: ef2756b6-3268-4636-bc18-97a49b89590f            
       service: hana
       service-plan: hdi-shared
   - name: project_management-auth
@@ -127,11 +126,6 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-host
-  - name: project_management-attachments
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: objectstore
-      service-plan: standard
 parameters:
   deploy_mode: html5-repo
 build-parameters:

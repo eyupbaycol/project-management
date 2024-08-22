@@ -19,19 +19,16 @@ sap.ui.define([
         // }
         onPost:  async function(oEvent) {
             const oContext = oEvent.getSource().getBindingContext()
-            const oModel = oContext.getModel()
+            var oModel = oContext.getModel()
             const oProject = await oContext.requestObject(oContext.getPath());
-            const oAction = oModel.bindContext("/setComment(...)")
+            // const oAction = oModel.bindContext("/setComment(...)")
+            const oAction = oModel.bindContext("/setComment(...)", oContext)
             oAction.setParameter("to_Ticket_TicketUUID", oProject.TicketUUID);
             oAction.setParameter("Message", oEvent.mParameters.value);
             oAction.setParameter("User", "000006");
             oAction.execute().then(
-                function () {
-                    var oList = this.byId("comment_list"); // Yorum listesinin ID'si
-                    oList.getModel().updateBindings(true)
-                }.bind(this),
-                function (oError) {
-                    debugger
+                function() {
+                    this.refresh()
                 }.bind(this)
             )
         }

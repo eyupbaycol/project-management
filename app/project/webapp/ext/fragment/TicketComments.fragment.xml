@@ -5,7 +5,10 @@
             icon="sap-icon://paper-plane"
             class="sapUiSmallMarginTopBottom"
         />
-        <List id="comment_list" showSeparators="Inner" items="{to_Comment}">
+        <List id="comment_list" showSeparators="Inner" items="{ path:'to_Comment', sorter: {
+            path: 'createdAt',
+            descending: true
+        }}">
             <FeedListItem 
                 sender="{CommentOwnerFullName}"
                 icon="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png"

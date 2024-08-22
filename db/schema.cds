@@ -37,6 +37,7 @@ entity Ticket : managed {
     TicketStatus : Association to TicketStatus; 
     to_Project : Association to Project;
     to_Comment : Composition of many Comment on to_Comment.to_Ticket = $self;
+    
 }
 
 entity Comment : managed {
@@ -48,7 +49,7 @@ entity Comment : managed {
 }
 
 entity Person : managed {
-  key PersonID : String(6);
+  key PersonID : String(20);
   FirstName      : String(40);
   LastName       : String(40);
   Title          : String(10);

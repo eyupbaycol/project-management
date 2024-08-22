@@ -1,58 +1,58 @@
 {
-    "name": "project_management",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@cap-js/attachments": "^1.1.5",
-        "@cap-js/sqlite": "^1.7.3",
-        "@sap/cds": "^7",
-        "@sap/hana-client": "^2.21.28",
-        "@sap/xssec": "^4.2.1",
-        "better-sqlite3": "^11.1.2",
-        "express": "^4"
-    },
-    "devDependencies": {
-        "@sap/cds-dk": "^7.9.6",
-        "@sap/eslint-plugin-cds": "^3",
-        "@sap/ux-specification": "^1.120.14",
-        "eslint": "^9",
-        "rimraf": "^3.0.2",
-        "sqlite3": "^5",
-        "ui5-middleware-simpleproxy": "^3.2.16"
-    },
-    "scripts": {
-        "start": "cds-serve",
-        "watch-projectmanagement": "cds watch --open projectmanagement/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-project": "cds watch --open project/webapp/index.html?sap-ui-xx-viewCache=false",
-        "undeploy": "cf undeploy project_management --delete-services --delete-service-keys --delete-service-brokers",
-        "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
-    },
-    "sapux": [
-        "app/projectmanagement",
-        "app/project",
-        "app/project"
-    ],
-    "engines": {
-        "node": "^18"
-    },
-    "cds": {
-        "requires": {
-            "[production]": {
-                "db": {
-                    "kind": "hana-cloud"
-                },
-                "auth": {
-                    "kind": "xsuaa",
-                    "restrict_all_services": false
-                }
-            },
-            "db": {
-                "kind": "sql"
-            }
+  "name": "project_management",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/sqlite": "^1.7.3",
+    "@sap/cds": "^7",
+    "@sap/hana-client": "^2.21.28",
+    "@sap/xssec": "^4.2.1",
+    "better-sqlite3": "^11.1.2",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^7.9.6",
+    "@sap/eslint-plugin-cds": "^3",
+    "@sap/ux-specification": "^1.120.14",
+    "eslint": "^9",
+    "rimraf": "^3.0.2",
+    "sqlite3": "^5",
+    "ui5-middleware-simpleproxy": "^3.2.16"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-projectmanagement": "cds watch --open projectmanagement/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project": "cds watch --open project/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy project_management --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "sapux": [
+    "app/projectmanagement",
+    "app/project",
+    "app/project"
+  ],
+  "engines": {
+    "node": "^18"
+  },
+  "cds": {
+    "hana" : { "deploy-format": "hdbtable" },
+    "requires": {
+      "[production]": {
+        "db": {
+          "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "xsuaa",
+          "restrict_all_services": false
         }
+      },
+      "db": {
+        "kind": "sql"
+      }
     }
+  }
 }
